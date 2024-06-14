@@ -1,6 +1,6 @@
 #include <iostream>
 #include "color.h"
-#include "math/vec3.h"
+#include "vec3.h"
 
 int main() {
 

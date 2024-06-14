@@ -19,4 +19,5 @@ file(GLOB_RECURSE libHead
         ${PROJECT_SOURCE_DIR}/src/*.hpp
     )
 
+include_directories(src/math src/util)
 add_executable(RT ${libSrc} ${libHead})
