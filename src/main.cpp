@@ -5,6 +5,7 @@
 
 bool hit_sphere(const point3 &center, double radius, const ray &r)
 {
+    //vector form of the equation of a circle to find points
     vec3 oc = center - r.origin();
     auto a = dot(r.direction(), r.direction());
     auto b = -2.0 * dot(r.direction(), oc);
@@ -64,6 +65,7 @@ int main()
         std::clog << "\rScanlines remaining: " << (image_height - j) << ' ' << std::flush;
         for (int i = 0; i < image_width; i++)
         {
+            //move from top right to bottom left shadding of pixels
             auto pixel_center = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
             auto ray_direction = pixel_center - camera_center;
             ray r(camera_center, ray_direction);
