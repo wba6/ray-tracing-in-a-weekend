@@ -14,8 +14,9 @@ public:
         auto a = r.direction().length_squared();
         auto h = dot(r.direction(), oc);
         auto c = oc.length_squared() - radius * radius;
-
         auto discriminant = h * h - a * c;
+
+        //behind the cameria I think
         if (discriminant < 0)
             return false;
 
