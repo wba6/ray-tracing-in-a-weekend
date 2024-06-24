@@ -2,6 +2,7 @@
 #include "hittable_list.h"
 #include "rtweekend.h"
 #include "sphere.h"
+#include "square.h"
 
 color ray_color(const ray &r, const hittable &world)
 {
@@ -33,6 +34,7 @@ int main()
 
     world.add(make_shared<sphere>(point3(0, 0, -1), 0.5));
     world.add(make_shared<sphere>(point3(0, -100.5, -1), 100));
+    //world.add(make_shared<square>(point3(0, -25, -5), 50));
 
     // Camera
     auto focal_length = 1.0;
