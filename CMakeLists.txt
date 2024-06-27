@@ -7,6 +7,12 @@ project(ray-trace VERSION 1.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+if(UNIX)
+    # Set the C and C++ compilers to Clang
+    set(CMAKE_C_COMPILER "clang")
+    set(CMAKE_CXX_COMPILER "clang++")
+endif()
+
 # Source files
 file(GLOB_RECURSE libSrc
         ${PROJECT_SOURCE_DIR}/src/*.c
