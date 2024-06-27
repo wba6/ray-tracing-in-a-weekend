@@ -8,7 +8,7 @@ class square : public hittable {
 public:
     square(const point3 &center, double side_length) : center(center), side_length(side_length) {}
 
-    bool hit(const ray &r, double ray_tmin, double ray_tmax, hit_record &rec) const override
+    bool hit(const ray &r, interval ray_t, hit_record &rec) const override
     {
         // Calculate the half side length
         double half_side_length = side_length / 2.0;
@@ -18,14 +18,14 @@ public:
         point3 max_bound = center + vec3(half_side_length, half_side_length, half_side_length);
 
         // Check if the ray intersects the square's bounding box
-        if (!checkBoundingBoxIntersection(r, min_bound, max_bound, ray_tmin, ray_tmax))
+        if (!checkBoundingBoxIntersection(r, min_bound, max_bound, ray_t.min, ray_t.max))
             return false;
 
         // Calculate the intersection point with the square's plane
         double t = (center.z() - r.origin().z()) / r.direction().z();
 
         // Check if the intersection point is within the acceptable range
-        if (t < ray_tmin || t > ray_tmax)
+        if (t < ray_t.min || t > ray_t.max)
             return false;
 
         // Calculate the intersection point
