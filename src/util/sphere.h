@@ -16,7 +16,7 @@ public:
         auto c = oc.length_squared() - radius * radius;
         auto discriminant = h * h - a * c;
 
-        //behind the cameria I think
+        //if the descriminat is less then zero the ray did not hit
         if (discriminant < 0)
             return false;
 
