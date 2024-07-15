@@ -1,15 +1,15 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "rtweekend.h"
-#include "vec3.h"
 #include "color.h"
 #include "hittable.h"
+#include "rtweekend.h"
+#include "vec3.h"
 
 class camera {
 public:
-    double aspect_ratio = 1.0;// Ratio of image width over height
-    int image_width = 100;    // Rendered image width in pixel count
+    double aspect_ratio = 1.0; // Ratio of image width over height
+    int image_width = 100;     // Rendered image width in pixel count
     int samples_per_pixel = 10;// Count of random samples for each pixel
 
     void render(const hittable &world)
@@ -38,11 +38,11 @@ public:
     }
 
 private:
-    int image_height;  // Rendered image height
-    point3 center;     // Camera center
-    point3 pixel00_loc;// Location of pixel 0, 0
-    vec3 pixel_delta_u;// Offset to pixel to the right
-    vec3 pixel_delta_v;// Offset to pixel below
+    int image_height;          // Rendered image height
+    point3 center;             // Camera center
+    point3 pixel00_loc;        // Location of pixel 0, 0
+    vec3 pixel_delta_u;        // Offset to pixel to the right
+    vec3 pixel_delta_v;        // Offset to pixel below
     double pixel_samples_scale;// Color scale factor for a sum of pixel samples
 
     void initialize()
@@ -100,6 +100,7 @@ private:
         if (world.hit(r, interval(0, infinity), rec))
         {
             vec3 direction = random_on_hemisphere(rec.normal);
+            // the 0.5 below is what contorls how much of the light is "absorbed" by an object
             return 0.5 * ray_color(ray(rec.p, direction), world);
         }
 
